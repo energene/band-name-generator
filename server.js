@@ -1,3 +1,5 @@
+'use strict';
+
 var Adjective = require('./lib/adjective');
 var Noun = require('./lib/noun');
 var Verb = require('./lib/verb');
@@ -39,7 +41,6 @@ app.get('/adjective', function(req, res) {
 });
 
 app.get('/noun', function(req, res) {
-  console.log("get /noun", noun)
   res.send(getRandomWord(noun));
 });
 
@@ -53,7 +54,6 @@ app.post("/adjective", function(req, res) {
 });
 
 app.post("/noun", function(req, res) {
-  console.log("/noun", noun)
   var postWordResponse = postWord(req.body.word, noun);
   res.send(postWordResponse);
 });
@@ -64,14 +64,12 @@ app.post("/verb", function(req, res) {
 });
 
 app.post("/reset", function(req, res) {
-  console.log("/reset")
   res.send(reset());
-  console.log("/reset", noun)
 });
 
 function postWord (word, wordObject) {
   if (wordObject.hasOwnProperty(word)) {
-   return {msg: 'We already have your awesome word, ' + word + ', in our list.'}
+   return {msg: 'We already have your awesome word, ' + word + ', in our list.'};
   } else {
     wordObject[word] = true;
     return {msg: 'Thanks for submitting ' + word + '!'};
