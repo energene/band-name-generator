@@ -1,15 +1,11 @@
+var Adjective = require('./lib/adjective');
+
 var express = require('express');
 var app = express();
 
 var port = process.env.PORT || 3000;
+app.use(express.static(__dirname + "/app/"));
 
-function Adjective() {
-  this.sleepy = true;
-  this.fuzzy = true;
-  this.cranky = true;
-  this.soporific = true;
-  this.eloquent = true;
-}
 
 var adjective = new Adjective();
 
@@ -21,7 +17,7 @@ function getRandomWord (object) {
 
 
 app.get('/', function(req, res) {
-  res.send('Hello Universe!');
+  res.sendFile("index.html");
 });
 
 app.get('/adjective', function(req, res) {
