@@ -2,11 +2,32 @@
 <html>
   <body>
     <button id="name">Get a random band name!</button>
-    <p>
-    Your name:
-    <span id="adjective"></span> </p>
-    <p>asdlfkjalkjd</p>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <p>Your name: <span id="adjective"></span>
+                  <span id="verb"></span>
+                  <span id="noun"></span></p>
+    <h3>Submit words!</h3>
+    <form id="submitWords">
+      <label for="user-adjective">Give us an adjective:</label>
+      <input type="text" name="adjective" id="user-adjective"><br>
+
+      <label for="user-verb">Give us an verb:</label>
+      <input type="text" name="verb" id="user-verb"><br>
+
+      <label for="user-noun">Give us an noun:</label>
+      <input type="text" name="noun" id="user-noun">
+
+      <input type="submit" value="Submit Words"><br>
+      <button id="reset" name="reset" value="reset">Clear new words!</button>
+
+    </form>
+    <p id='adjectiveRes'></p>
+    <p id='nounRes'></p>
+    <p id='verbRes'></p>
+    <p id='resetRes'></p>
+
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='script.js'></script>
   </body>
 </html>
+
+

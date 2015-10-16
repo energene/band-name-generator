@@ -2,7 +2,7 @@
 
 $(function() {
 
-  $("button").click(function() {
+  $("button[id=name]").click(function() {
     $.get('adjective', function(response) {
       var adjective = response.word;
       $("#adjective").text(adjective);
@@ -24,6 +24,11 @@ $(function() {
 
     var adjective = $("input[name=adjective]").val();
     var adjPost;
+    var noun = $("input[name=noun]").val();
+    var nounPost;
+    var verb = $("input[name=verb]").val();
+    var verbPost;
+    var reset = $("button[name=reset]").val();
 
     if (adjective) {
       adjPost = {word: adjective};
@@ -32,23 +37,25 @@ $(function() {
         $("#adjectiveRes").text(adjectiveRes);
       });
     }
-
+    if (verb) {
+      verbPost = {word: verb};
+      $.post("verb", verbPost, function(response) {
+        var verbRes = response.msg;
+        $("#verbRes").text(verbRes);
+      });
+    }
+    if (noun) {
+      nounPost = {word: noun};
+      $.post("noun", nounPost, function(response) {
+        var nounRes = response.msg;
+        $("#nounRes").text(nounRes);
+      });
+    }
   });
-
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+$("button[id=reset]").click(function() {
+  $.post("reset", function(response) {
+    $("#resetRes").text("Successful reset!");
+  });
+});
